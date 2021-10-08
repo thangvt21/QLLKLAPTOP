@@ -1,0 +1,13 @@
+{
+    "cart":[
+        {
+            "id": 1,
+            "name": "Matte lipstick",
+            "price": 39.99,
+            "like": true,
+            "img": "https://chupanh.vn/wp-content/uploads/2017/06/meo-chup-anh-son-nhin-anh-la-muon-mua-ngay-ve-nha1.jpg",
+            "about":
+              "Succulent Plantis one of the most popular and beautiful species that will produce clumpms. The storage of water often gives succulent plants a more swollen or fleshy appearance than other plants, a characteristic known as succulence."
+        }
+    ]
+}

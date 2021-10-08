@@ -1,0 +1,50 @@
+{
+    "products":[
+        {
+            "id": 1,
+            "name": "RAM PC Kingston Fury HyperX Kingston Fury 8GB DDR4 2666Mhz",
+            "price": 19.99,
+            "like": true,
+            "img": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTlzFW1y0zBVywiV4ItXC_z0ZGZaSfIV98WPp0qE-5lbgVB9F41eTPWCyI89EHf_hSvqOTOVf17zJISdMNH0mzOU2roib6MUGgSBJeBogBm&amp;usqp=CAE",
+            "about":
+              "1x8GB 2666MHz DDR4"
+          },
+        
+          {
+            "id": 2,
+            "name": "RAM KINGSTON HYPERX FURY 16GB DDR4 3200Mhz",
+            "price": 39.99,
+            "like": false,
+            "img": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcS7hE6dDYWMwWn-YOCQKnJDgn1xdssjUFSy2v59fKu5feNiwp_WQXXMpy8TPdtUJ87c33po4QxTaZpgWxdy0r7ETvSFFVa6X7GevaC6xw2BAAMSfLfxxLHtkg&amp;usqp=CAE",
+            "about":
+              "2x8GB 3200MHZ"
+          },
+          {
+            "id": 3,
+            "name": "RAM Desktop 16GB DDR4 3200Mhz Corsair Vengeance Lpx BLACK",
+            "price": 29.99,
+            "like": false,
+            "img": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTRjq66QGG1BNX2DXdIwe7hbYXO9OFQv8BuBBLgVymO3dpi9IgSYKt10z-elxFA4wHhwexYm1ZO-UGYXNmG0JrCdDAiEbuCdEMaBo4-NukVFMIhYOwkYTrpLQ&amp;usqp=CAE",
+            "about":
+              " 1x16GB 3200MHZ DDR4"
+          },
+          {
+            "id": 4,
+            "name": "RAM Desktop Adata XPG Gammix 16GB DDR4 3000Mhz",
+            "price": 9.99,
+            "like": false,
+            "img": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRedaf161g_rKuOETSegMHy27PQIKVB5yqNwhruXUj2XVyo46QamVdOhfk6-8mnufUsZtN2O0B9cSuMz81M0hz177PnR7N1p45eHdNqgjJHHna6IhGYBs7jrA&amp;usqp=CAE",
+            "about":
+              "1x16GB 3000MHZ"
+          },
+          {
+            "id": 5,
+            "name": "Ram Kingston DDR4 16GB Bus 2666Mhz",
+            "price": 8.99,
+            "like": false,
+            "img": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTPkMnOMuqxtH-HwOqwaPVMU34YPD5bbDdN8Ddei7oYadGCOiQ-dEfQSi_YQwPUk0tKhXmacsjI8dtrsu4TYEHfgQHgR8JylcWY__tuHBWi&amp;usqp=CAE",
+            "about":
+              "2x8GB 2666MHZ"
+          }
+    ]
+}
