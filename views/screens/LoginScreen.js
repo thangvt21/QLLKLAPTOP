@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { StyleSheet, TouchableOpacity, Text, TextInput, View, Button, ScrollView, Image } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import LottieView from 'lottie-react-native';
 
 const data=require('../../products/user.json')
 
@@ -47,7 +48,7 @@ export default class LoginScreen extends Component{
     return (
         <View style={styles.mainView}>
             <View style={styles.TopView}>
-                <Image style={styles.Imagest} source={require('../../assets/logo.jpg')}/>
+            <LottieView source={require('../../assets/computer.json')} autoPlay loop />
             </View>
             <ScrollView style={styles.BottomView}>
                 <Text style={styles.Headding}>
