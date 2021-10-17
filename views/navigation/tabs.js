@@ -3,7 +3,6 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import HomeScreen from '../screens/HomeScreen';
 import CartScreen from '../screens/CartScreen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-
 const Tab = createMaterialBottomTabNavigator();
 const Tabs =()=>{
     return(
@@ -13,7 +12,6 @@ const Tabs =()=>{
             shadowOffset: {width: 0, height:-2 },
             shadowOpacity: 0.5,
             shadowRadius: 3,
-            borderRadius: 4,
             elevation: 3
           }}    
         >

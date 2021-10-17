@@ -1,7 +1,7 @@
 {
     "products":[
         {
-            "id": 1,
+            "id": 17,
             "name": "GIGABYTE GeForce RTX 3090 Vision OC 24G",
             "price": 2899.99,
             "like": true,
@@ -11,7 +11,7 @@
           },
         
           {
-            "id": 2,
+            "id": 18,
             "name": "GIGABYTE GeForce RTX 3070 GAMING OC 8G",
             "price": 1199.99,
             "like": false,
@@ -20,7 +20,7 @@
               "Noice"
           },
           {
-            "id": 3,
+            "id": 19,
             "name": "ASUS ROG Strix GeForce RTX 3090 Gaming OC edition 24G",
             "price": 3499.99,
             "like": false,
@@ -29,7 +29,7 @@
               "uWU"
           },
           {
-            "id": 4,
+            "id": 20,
             "name": "MSI GeForce RTX 3090 GAMING X TRIO 24G",
             "price": 2899.99,
             "like": false,
@@ -38,7 +38,7 @@
               "OWO"
           },
           {
-            "id": 5,
+            "id": 21,
             "name": "GIGABYTE NVIDIA Quadro P2200 5GB GDDR5X",
             "price": 499.99,
             "like": false,
@@ -47,7 +47,7 @@
               "nothingtosay"
           },
           {
-            "id": 6,
+            "id": 22,
             "name": "Gigabyte Aorus GeForce RTX 3080 Xtreme Waterforce WB 10G",
             "price": 1999.99,
             "like": false,

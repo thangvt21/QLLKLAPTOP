@@ -7,115 +7,117 @@ export default class DetailsScreen extends Component {
     constructor (props) {
         super(props);
         this.navigation = props.navigation;
-        this.gotoNotify = this.gotoNotify.bind(this);
         this.addCart=this.addCart.bind(this);
         this.state = {
             data: props.route.params,
-            cong:0,
-            tru:0,
-            dem:0,
+            plus:0,
+            minus:0,
+            count:0,
         }
     }
     addCart(item){
-        data.carts.push({tonggia: item.price,Quantity:1,name: item.name,price : item.price});
-    }
-    gotoNotify() {
-    this.navigation.navigate('Cart');
+        data.carts.push({ id: item.id, sum: item.price, Quantity: 1,name: item.name,price : item.price});
+        this.navigation.navigate('Cart')
     }
   render(){
           return(
-            <View>
+            <View style={{backgroundColor: '#202020'}}>
                 <View style={styles.Header}>
-                    <View style={styles.goback} >
-                        <Text style={styles.textback} onPress={()=>this.navigation.navigate('Home')}>
-                        Back
-                        </Text>
+                    <View >
+                        <TouchableOpacity   
+                            style = {styles.buttonBack} 
+                            onPress = {()=>this.navigation.navigate('Home')}
+                            >
+                            <Image
+                                source={require('../../assets/back-icon.png')}
+                                resizeMode = 'contain'
+                                style={{
+                                    height: 30,
+                                    width: 30
+                                }}
+                            />
+                        </TouchableOpacity>
                     </View>
                 </View>
 
-                <ScrollView style={{backgroundColor: '#202020'}}>
-                  <SafeAreaView style={{flex:1}}>
-                  
-                  <View style={styles.imageContainer}>
-                        <Image 
-                            source = {{uri:this.state.data.img}}
-                            style= {{
-                                resizeMode:'contain',
-                                flex:1,
-                                height:400,
-                                width:400, 
-                                borderRadius:20
-                            }}
-                        />
-                  </View>
-                  
-                  <View style={styles.detailContainer}>
-                        <View style={{marginLeft:20,flexDirection:'row',alignItems:'flex-end'}}>
-                            <View style={styles.line} />
-                            <Text style={{fontSize: 18, fontWeight: 'bold',color:'white'}}>Best choice</Text>
-                        </View>
-                        <View
-                            style={{
-                                marginLeft: 20,
-                                marginTop: 20,
-                                flexDirection: 'row',
-                                justifyContent: 'space-between',
-                                alignItems: 'center',
-                            }}
+                <View style={styles.detailContainer}>
+                    <View
+                        style={{
+                             paddingTop: 10,
+                             paddingLeft: 10,
+                             paddingRight: 10,
+                             paddingBottom: 5  
+                        }}
                         >
-                            <Text style = {{
-                                fontSize: 22, 
-                                fontWeight: 'bold',
-                                color:'white'
-                                }}>
-                                {this.state.data.name}
+                    <Text style = {{
+                        fontSize: 22, 
+                        fontWeight: 'bold',
+                        color:'white'
+                        }}>
+                            {this.state.data.name}
+                    </Text>
+                </View>
+                <View style={{
+                    paddingTop: 5,
+                    paddingLeft: 10,
+                    paddingRight: 10,
+                    paddingBottom: 10 
+                }}>
+                    <Text style={{ fontSize:18, color:'#dadada' }}>
+                        {this.state.data.about}
+                    </Text>
+                </View>
+                <View>
+                    <View style={{
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                        padding: 20,
+                        alignItems: 'center'
+                    }}>
+                        <View style={{
+                            flexDirection:'row',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }}>
+                            <Text 
+                                style={{
+                                    fontSize: 18,
+                                    color: '#bdbdbd'
+                                }}
+                                >Price:
                             </Text>
-                        <View style={styles.price}>
                             <Text style= {{
-                                marginLeft:20,
-                                color:'white',
-                                fontWeight: 'bold',
-                                fontSize: 16,}}>
-                                    $ {this.state.data.price}
+                                    marginLeft:18,
+                                    color:'#bdbdbd',
+                                    fontSize: 16,}}>
+                                $ {this.state.data.price}
                             </Text>
-                      </View>
-                  </View>
-                  <View style={{ paddingHorizontal:20, marginTop:10 }}>
-                       <Text style={{ fontSize:20, fontWeight:'bold', color:'white' }}>
-                             About
-                      </Text>
-                       <Text style={{ fontSize:20, fontWeight:'bold', color:'white' }}>
-                           {this.state.data.about}
-                      </Text>
-                  </View>
-                  <View style={{ marginTop:20, flexDirection:'row', justifyContent:'space-between'}}>
-                      <View style={{ flexDirection:'row', alignItems:'center'}}>
-                              
-                          </View>
-                          <View style={styles.buyBtn}>
-                          <Text onPress={()=>this.addCart(this.state.data)}
-                              style={{color: 'white', fontSize: 18, fontWeight: 'bold'}}>
-                              Buy
-                          </Text>
-                      </View>
-                      </View>
-                  </View>
-          
-              </SafeAreaView>
-          </ScrollView>
-              </View>
-          )
-     }
+                        </View>
+                        
+                        <View style ={{flexDirection: 'row', justifyContent:'flex-end'}}>
+                            <TouchableOpacity onPress={()=>this.addCart(this.state.data)} style={styles.buyBtn}>
+                                <Text
+                                    style={{color: '#121212', fontSize: 18, fontWeight: 'bold'}}
+                                >Add to cart
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
+            </View>
+        </View>
+        )
+    }
 }
 
 const styles = StyleSheet.create({
     buyBtn: {
-        width: 130,
-        height: 50,
-        backgroundColor:'#FF7979',
-        justifyContent: 'center',
+        width: 120,
+        height: 40,
+        backgroundColor:'#03dac5',
+        borderRadius: 4,
         alignItems: 'center',
-        borderRadius: 30,
+        justifyContent: 'center'
       },
     borderBtn: {
         borderColor: 'white',
@@ -156,14 +158,8 @@ const styles = StyleSheet.create({
         marginRight:10,
     },
     detailContainer:{
-        flex:0.55,
-        backgroundColor:'#95afc0',
-        marginHorizontal:7,
-        marginBottom:7,
-        borderRadius:20,
-        marginTop:30,
-        paddingTop:30,
-        height:500,
+        backgroundColor:'#202020',
+        paddingBottom:500
     },
     imageContainer:{
         flex:0.45,
@@ -171,27 +167,17 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems:'center',
     },  
-    textback:{
-        marginTop:20,
-        fontSize:20,
-        fontWeight:'bold',
-        color:'#30336b'
-    },
-    goback:{
-        width:50,
-        height:50,
-        borderRadius:5,
-        fontSize:20,
-        fontWeight:'bold',
-        backgroundColor:'#FF7979',
-        alignItems:'center',
-        justifyContent: 'center'
-    },
     Header:{
         flexDirection:'row',
         justifyContent:'space-between',
         backgroundColor:'black',    
-        marginTop: 0  
+        paddingTop: 30,
+        paddingBottom: 10,
+        shadowOffset: {width: 0, height:-2 },
+        shadowOpacity: 0.5,
+        shadowRadius: 3,
+        borderRadius: 4,
+        elevation: 3  
     },
     container: {
         flex: 1,
@@ -210,7 +196,16 @@ const styles = StyleSheet.create({
         width: 150,
         alignItems: 'center'
     },
-    buttonText: {
-        // textAlign: 'center'
+    buttonBack: {
+        paddingTop: 5,
+        paddingBottom: 5,
+        paddingLeft: 10,
+        paddingRight: 10,
+        marginLeft: 10,
+        backgroundColor: '#03dac5',
+        shadowColor: '#03dac5',
+        shadowOffset: {width: 0, height: 4},
+        shadowOpacity: 0.5,
+        shadowRadius: 3
     }
 });
