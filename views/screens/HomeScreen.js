@@ -7,19 +7,15 @@ import {
   StyleSheet,
   FlatList,
   Dimensions,
-  TextInput,
-  ScrollView,
+  ScrollView
 } from 'react-native';
 
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-const width = Dimensions.get('screen').width / 2 - 30;
-import products from '../screens/products';
-import products2 from '../screens/products2';
-import DetailScreen from './DetailScreen';
-let productsjson1 = require('../../products/products.json');
-let productsjson2 = require('../../products/products2.json');
-let productsjson3 = require('../../products/products3.json');
-let productsjson4 = require('../../products/products4.json');
+const width = Dimensions.get('screen').width / 2 - 20;
+
+let CPU = require('../../products/products.json');
+let RAM = require('../../products/products2.json');
+let MAIN = require('../../products/products3.json');
+let GPU = require('../../products/products4.json');
 
 export default class HomeScreen extends Component {
   constructor(props) {
@@ -27,17 +23,15 @@ export default class HomeScreen extends Component {
     this.navigation = props.navigation;
     
     this.gotoDetail = this.gotoDetail.bind(this);
-    this.refreshFlatList = this.refreshFlatList.bind(this);
+    this.renderListProducts = this.renderListProducts.bind(this);
     this.state = {
-      data: productsjson1.products,
+      data: CPU.products,
     };
   }
   gotoDetail(product) {
     this.navigation.navigate('Detail', product);
  }
-  findout(item) {
-  }
-  refreshFlatList(products) {
+  renderListProducts(products) {
     this.setState(this.state.data=products)
   }
   render() {
@@ -45,58 +39,85 @@ export default class HomeScreen extends Component {
       return (
         <TouchableOpacity onPress={() => this.gotoDetail(product)}>
           <View style={styles.Card}>
-            <View>
                 <View style={styles.cardImg}>
                     <Image 
                   style={styles.img1}
-                  source={{uri: product.img}}/>
-                                                
+                  source={{uri: product.img}}/>                           
                 </View>
-                <Text style={styles.productName}>
+
+                <View style={{padding: 10}}>
+                  <Text style={styles.productName}>
                     {product.name}
-                </Text>
-                <View style={styles.priceContainer}>
+                  </Text>
+                </View>
+                
+                <View style={{padding: 10, paddingBottom: 150}}>
                     <Text style={styles.productPrice}>
-                        ${product.price}
+                        $ {product.price}
                     </Text>
-                    <View style={styles.addButtonContainer}>
-                        <Text style={styles.addButtonText}>
-                            +
-                        </Text>
-                    </View>
                 </View>
             </View>
-        </View>
     </TouchableOpacity>
     );
 };
     return(           
-      <View style={{backgroundColor: 'white'}}>
-       
+      <View style={{backgroundColor: '#202020', paddingBottom: 50}}>   
+        <View style={{
+            paddingTop: 30, 
+            backgroundColor: '#020202',
+            paddingBottom: 5,
+            shadowColor: 'black',
+            shadowOffset: {width: 0, height:4 },
+            shadowOpacity: 0.5,
+            shadowRadius: 3,
+            borderRadius: 4,
+            elevation: 3
+          }}>
+            <View style={{alignItems: 'center', padding: 5}}>
+              <Text style={{color: 'white', fontSize: 16, fontWeight: 'bold'}}>Home</Text>
+            </View>
+            
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.categoriesListContainer}>
-        <View style={styles.swip}>
-          <Text
-            style={styles.swiptext}
-            onPress={() => this.refreshFlatList(productsjson1.products)}>
-            CPU
-          </Text>
-          <Text
-            style={styles.swiptext}
-            onPress={() => this.refreshFlatList(productsjson2.products)}>
-            RAM
-          </Text>
-          <Text
-            style={styles.swiptext}
-            onPress={() => this.refreshFlatList(productsjson3.products)}>
-            Mainboard
-          </Text>
-          <Text
-            style={styles.swiptext}
-            onPress={() => this.refreshFlatList(productsjson4.products)}>
-            GPU
-          </Text>
-        </View>
+          <View style={styles.barContainer}>
+            <TouchableOpacity 
+              style={styles.categoryContainer}
+              onPress={() => this.renderListProducts(CPU.products)}
+            >
+              <Text style={styles.categoryText}>
+                CPU
+              </Text>
+            </TouchableOpacity>
+         
+            <TouchableOpacity 
+              style={styles.categoryContainer}
+              onPress={() => this.renderListProducts(RAM.products)}
+            >
+              <Text style={styles.categoryText}>
+                RAM
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity 
+              style={styles.categoryContainer}
+              onPress={() => this.renderListProducts(MAIN.products)}
+            >
+              <Text style={styles.categoryText}>
+                MAIN
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity 
+              style={styles.categoryContainer}
+              onPress={() => this.renderListProducts(GPU.products)}
+            >
+              <Text style={styles.categoryText}>
+                GPU
+              </Text>
+            </TouchableOpacity>
+          </View>
         </ScrollView>
+        </View>
+        
 
         <FlatList 
           numColumns={2}
@@ -105,8 +126,8 @@ export default class HomeScreen extends Component {
           columnWrapperStyle={{justifyContent: 'space-between'}}
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{
-            margin: 10,
-            paddingBottom: 150,
+            padding: 15,
+            paddingBottom: 90
           }}
         />
       </View>
@@ -115,54 +136,25 @@ export default class HomeScreen extends Component {
 }
 
 const styles = StyleSheet.create({
-  swiptext: {
-    color: 'white',
-    fontWeight: 'bold',
-    paddingTop: 15,
-    paddingLeft: 25,
-    paddingBottom: 25,
-    paddingRight: 25,
-    backgroundColor: 'black',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: 30,
-  },
-  brandTop: {
-    marginLeft: 30,
-    fontWeight: 'bold',
-    fontSize: 30,
-    
-  },
-  swip:{   
-    alignItems: 'center',
-    justifyContent: 'space-around',
-    paddingHorizontal: 5,
-    flexDirection: 'row',
-    
-  },
   productName:{
-    fontSize:16,
+    fontSize:14,
     textAlign:'left',
-    justifyContent:'flex-start',
     fontWeight:'bold', 
-    marginBottom: 10,
-  },
-  priceContainer:{
-    flexDirection:'row',
-    justifyContent:'space-between',
+    color: '#dadada'
   },
   productPrice:{
-    fontSize:16,
-    paddingBottom: 15,
-    textAlign:'left',
+    fontSize:14,
+    color: '#bdbdbd',
+    textAlign:'right',
     fontWeight:'bold',
   },
   img1:{
     flex: 1,
-    resizeMode: 'contain',
-    height: 200,
-    width: 100,
-    borderRadius: 15,
+    height: 190,
+    width: 185,
+    borderTopLeftRadius:4,
+    borderTopRightRadius:4,
+    opacity: 0.7
   },
   addButtonContainer:{
     height:25,
@@ -175,41 +167,30 @@ const styles = StyleSheet.create({
   },
   addButtonText:{
     fontSize:18,
-    color:'white',
+    color:'#c6c6c6',
     fontWeight:'bold',
     flex:1,
   },
   Card: {
-    backgroundColor:'white',
-    height:275,
-    width,
-    paddingHorizontal: 10,
-    paddingBottom: 20,
-    marginLeft: 10,
-    marginRight: 10,
-    borderWidth: 0.5,
-    margin: 10,
-    borderColor: 'gray',
-    borderTopWidth: 5,
-    borderTopColor: 'black',
+    flexDirection: 'column',
+    backgroundColor:'#2a2a2a',
+    height:320,
+    width: 185,
+    marginBottom: 20,
     elevation: 2,
-    shadowOpacity: 0.3,
-    shadowRadius: 3,
-  },
-  cardImg:{
-    height:120,
-    margin:10,
-    padding: 10,
-    alignItems:'center',
-    justifyContent:'center',
-  },
-  categoriesListContainer: {
-    paddingVertical: 10,
-    alignItems: 'center',
-    paddingHorizontal: 20,
-    elevation: 3,
+    shadowColor: 'black',
+    shadowOffset: {width: -4, height: 6},
     shadowOpacity: 0.5,
     shadowRadius: 3,
+    borderRadius: 4,
+  },
+  cardImg:{
+    height:190,
+    width: 190,
+  },
+  categoriesListContainer: {
+    paddingTop: 10,
+    paddingBottom: 10,
   },
   CategorySelected: {
     color:'white',
@@ -218,41 +199,32 @@ const styles = StyleSheet.create({
     borderColor:'white',
   },
   categoryText: {
-    fontSize: 16,
-    color:'white',
+    fontSize: 14,
+    color:'#121212',
     fontWeight:'bold',
+    padding: 10
   },
   categoryContainer: {
-    backgroundColor:'white',
-    flexDirection:'row',
-    marginTop:30,
-    marginBottom:10,
-    marginLeft:10,
-    marginRight:10,
-    justifyContent:'space-between',
-    color:'white'
+    backgroundColor:'#03dac5',
+    marginRight: 15,
+    marginLeft: 15,
+    paddingTop: 5,
+    paddingBottom: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
+    borderRadius: 4,
+    shadowColor: '#03dac5',
+    shadowOffset: {width: 0, height: 4},
+    shadowOpacity: 0.5,
+    shadowRadius: 3
   },
-  seachContainer: {
-    flex:1,
-    padding: 5,
-    flexDirection:'row',
-    alignItems:'center',
-    backgroundColor:'white',
-    borderColor: 'white',
-    margin: 15,
-    marginBottom: 5,
-    marginLeft: 25,
-    borderWidth: 1,
-    borderBottomColor: 'black'
+ 
+  barContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  inputseach: {
-    fontSize: 18,
-    fontWeight:'bold',
-    color:'black',
-    backgroundColor:'white',  
-    width:230,
-    marginLeft: 5,
-  },
+
   header: { 
     flexDirection:'row',
     justifyContent:'space-between',
