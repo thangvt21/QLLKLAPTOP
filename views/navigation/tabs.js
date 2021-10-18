@@ -47,7 +47,7 @@ const Tabs =()=>{
             }}
           />
           <Tab.Screen
-            name="Notify"
+            name="Notification"
             component={NotifyScreen}
             options={{
               tabBarIcon: ({color}) => (

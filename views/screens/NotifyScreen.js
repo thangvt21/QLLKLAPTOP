@@ -56,10 +56,10 @@ const styles = StyleSheet.create({
         padding:10,
       },
       notificationBox: {
-        padding:15,
-        marginBottom:5,
+        padding:20,
+        marginBottom:15,
         backgroundColor:'white',
-        marginBottom: 20,
+        // marginBottom: 20,
         elevation: 2,
         shadowColor: 'black',
         shadowOffset: {width: -4, height: 6},

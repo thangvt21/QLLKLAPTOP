@@ -77,7 +77,8 @@ const styles = StyleSheet.create({
         height: 42,
         paddingLeft:5,
         marginTop:20,
-        color: '#fff'
+        color: '#fff',
+        borderRadius: 4
     },
     Button:{
         width:'90%',
@@ -87,7 +88,8 @@ const styles = StyleSheet.create({
         marginTop:20,
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        borderRadius: 4
     },
     ButtonText:{
         fontWeight: 'bold',
