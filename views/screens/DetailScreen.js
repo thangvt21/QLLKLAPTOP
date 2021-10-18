@@ -16,7 +16,7 @@ export default class DetailsScreen extends Component {
         }
     }
     addCart(item){
-        data.carts.push({ id: item.id, sum: item.price, Quantity: 1,name: item.name,price : item.price});
+        data.carts.push({ sum: item.price, Quantity: 1,name: item.name,price : item.price});
         this.navigation.navigate('Cart')
     }
   render(){
