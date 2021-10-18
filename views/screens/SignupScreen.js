@@ -1,5 +1,8 @@
 import React from 'react'
 import { StyleSheet, TouchableOpacity, Text, TextInput, View, Button, ScrollView, Image } from 'react-native'
+import LottieView from 'lottie-react-native';
+
+const data=require('../../products/user.json')
 //import { firebase } from '../../Firebase/firebase';
 const SignupScreen = ({navigation}) => {
     function navigate(){
@@ -8,7 +11,7 @@ const SignupScreen = ({navigation}) => {
     return (
         <View style={styles.mainView}>
             <View style={styles.TopView}>
-                <Image style={styles.Imagest} source={require('../../assets/logo.jpg')}/>
+                <LottieView source={require('../../assets/computer.json')} autoPlay loop />
             </View>
             <ScrollView style={styles.BottomView}>
                 <Text style={styles.Headding}>

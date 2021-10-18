@@ -48,7 +48,7 @@ export default class LoginScreen extends Component{
     return (
         <View style={styles.mainView}>
             <View style={styles.TopView}>
-            <LottieView source={require('../../assets/computer.json')} autoPlay loop />
+                <LottieView source={require('../../assets/computer.json')} autoPlay loop />
             </View>
             <ScrollView style={styles.BottomView}>
                 <Text style={styles.Headding}>
