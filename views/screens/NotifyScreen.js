@@ -14,9 +14,23 @@ export default class NotifyScreen extends Component{
     constructor(props){
         super(props)
         this.navigation= props.navigation
+        this.removeCartItem=this.removeCartItem.bind(this);
         this.state={
             data:data.notifies
         };
+    }
+    removeCartItem(id){
+      for(let i=0;i<data.notifies.length;i++){
+        if(data.notifies[i].id === id){ 
+          data.notifies.splice(i,1);     
+        }
+      }
+      //  this.navigation.navigate('Notify',data.notifies)
+      // this.navigation.navigate('Notify')
+    }  
+    deleteItemById = id => {
+      const filteredData = this.state.data.filter(item => item.id !== id);
+      this.setState({ data: filteredData });
     }
     render(){
         return(
@@ -28,6 +42,7 @@ export default class NotifyScreen extends Component{
               style={styles.notificationList} 
               enableEmptySections={true}
               data={this.state.data}
+              removeCartItem={this.removeCartItem()}
               keyExtractor= {(item) => {
                 return item.id.toString();
               }}
@@ -38,6 +53,18 @@ export default class NotifyScreen extends Component{
                             <Image style={styles.icon}
                             source={{uri: 'https://img.icons8.com/ios/50/000000/computer-chat.png'}}/>
                             <Text style={styles.description}>{item.about}</Text>
+                            <TouchableOpacity onPress={()=>this.deleteItemById(item.id)}
+                            style={{
+                              paddingBottom:5,
+                              paddingRight:5,  
+                              
+                              }}>
+                              <Text style={{   
+                                    fontWeight: 'bold',
+                                    color: '#bb86fc',  
+                                    fontSize: 18,
+                              }}>X</Text>
+                            </TouchableOpacity>
                         </View>
                     </TouchableOpacity>
                 )}}/>
@@ -52,8 +79,10 @@ const styles = StyleSheet.create({
       paddingBottom: 50
       },
       notificationList:{
+        width:'100%',
         marginTop:20,
         padding:10,
+        backgroundColor: '#808080',
       },
       notificationBox: {
         padding:15,
@@ -73,6 +102,7 @@ const styles = StyleSheet.create({
         height:35
       },
       description:{
+        width:'80%',
         fontSize:17.5,
         color: "black",
         marginLeft:10,
